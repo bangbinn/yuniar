@@ -43,6 +43,9 @@
 
     /* ====== Card ====== */
     .card{position:relative;border:2px solid transparent;background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.78)) padding-box, linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) border-box; backdrop-filter:saturate(160%) blur(10px); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    /* Intro card with bright Instagram-style gradient */
+    .intro-card{background: linear-gradient(120deg, #fff7b3 0%, #ffb27a 28%, #ff7fb0 55%, #b788ff 75%, #7ea0ff 100%); border:0; color:var(--text)}
+    .intro-card .card-inner{background: rgb(255 255 255 / .18); border-radius: calc(var(--radius) - 4px)}
     .card-inner{padding:22px 22px}
     .card:hover{transform:translateY(-2px);transition:transform .18s ease}
 
@@ -117,7 +120,7 @@
   <div class="wrap">
     <div class="stack" role="main">
       <!-- ===== Card 1: Sambutan ===== -->
-      <section class="card" aria-labelledby="hi-title">
+      <section class="card intro-card" aria-labelledby="hi-title">
         <div class="card-inner">
           <div class="title" id="hi-title">
             <span class="badge" aria-hidden="true">Haiii</span>
