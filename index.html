@@ -2,198 +2,343 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mood Booster • 1 Halaman</title>
-  <meta name="description" content="Dua kartu sederhana: sambutan dan pemutar video YouTube untuk mood booster." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>HBD Yuniar💖</title>
   <style>
-    /* ====== Reset ringkas ====== */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;line-height:1.5;-webkit-font-smoothing:antialiased;font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif;background: 
-      radial-gradient(1400px 900px at 10% -10%, rgba(255,246,220,.9) 0%, rgba(255,218,185,.7) 30%, transparent 70%),
-      radial-gradient(1200px 900px at 110% 10%, rgba(246,232,255,.85) 0%, rgba(255,200,230,.6) 35%, transparent 70%),
-      linear-gradient(120deg, #fff3a6 0%, #ffb27a 30%, #ff7fb0 55%, #b788ff 75%, #7ea0ff 100%);}
-    img,svg,video{display:block;max-width:100%}
-    
-    /* ====== Theme tokens ====== */
     :root{
-      --text:#16181d;
-      --muted:#5c6470;
-      --card:#ffffffcc;       /* translucent */
-      --card-solid:#ffffff;   /* solid base for nested elems */
-      --ring: 0 0 0 8px rgb(255 255 255 / .7), 0 10px 30px rgb(17 24 39 / .15);
-      --radius: 18px;
-      --shadow: 0 10px 30px rgb(17 24 39 / .18);
-      --brand:#6c5ce7; /* ultraviolet */
-      --brand-accent:#00c2ff; /* aqua */
-      --ok:#00d38f;
+      --bg1:#4d1f33; --bg2:#662244; --spark:#803355; --spark2:#993366;
+      --text:#f8dfe8; --muted:#d9a8c0;
+      --btn:#ff5fa3; --btn2:#ff77b7; --btnText:#fff;
+      --cardBg:#803355;
     }
 
-    /* ====== Layout ====== */
-    .wrap{min-height:100%;display:grid;place-items:center;padding:clamp(16px,4vw,32px)}
-    .stack{width:min(840px,100%);display:grid;gap:clamp(14px,2.8vw,22px)}
-
-    /* ====== Fun header ====== */
-    header{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px}
-    header .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 160deg at 50% 50%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75);box-shadow:var(--shadow)}
-    header h1{font-size:clamp(20px,4.2vw,28px);color:var(--text);letter-spacing:-.02em}
-
-    /* ====== Card ====== */
-    .card{position:relative;border:2px solid transparent;background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.78)) padding-box, linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) border-box; backdrop-filter:saturate(160%) blur(10px); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
-    /* Intro card with bright Instagram-style gradient */
-    .intro-card{background: linear-gradient(120deg, #fff7b3 0%, #ffb27a 28%, #ff7fb0 55%, #b788ff 75%, #7ea0ff 100%); border:0; color:var(--text)}
-    .intro-card .card-inner{background: rgb(255 255 255 / .18); border-radius: calc(var(--radius) - 4px)}
-    .card-inner{padding:22px 22px}
-    .card:hover{transform:translateY(-2px);transition:transform .18s ease}
-
-    /* floating action button outside the card */
-    .card-wrap{position:relative}
-    /* stack of floating buttons at bottom-right */
-    .fab-stack{position:absolute; right:clamp(8px,1.6vw,14px); bottom:clamp(-20px,-3vw,-12px); display:flex; flex-direction:column; gap:8px; align-items:flex-end; z-index:2}
-    .float-btn{background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff; padding:10px 14px; border-radius:999px; border:0; box-shadow:var(--shadow); display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:600; min-height:44px; contain:layout paint; white-space:nowrap; width:auto;}
-    .fab-stack .float-btn{position:static; margin:0;}
-    .float-btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgb(17 24 39 / .18);} 
-    .float-btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgb(17 24 39 / .18);} 
-
-    /* confetti corners */
-    .sprinkles{position:absolute;inset:auto 0 0 auto;width:120px;height:120px;opacity:.15;background:
-      radial-gradient(6px 6px at 20% 20%, #ff7ab6 98%, transparent),
-      radial-gradient(5px 5px at 70% 30%, #7ee7ff 98%, transparent),
-      radial-gradient(4px 4px at 40% 70%, #ffd36a 98%, transparent),
-      radial-gradient(3px 3px at 85% 60%, #8bffca 98%, transparent);
-      pointer-events:none
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at -10% -10%, var(--spark) 0%, transparent 60%),
+        radial-gradient(900px 500px at 110% 10%, var(--spark2) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
     }
 
-    /* ====== Card 1 (teks) ====== */
-    .title{display:flex;align-items:center;gap:10px;font-weight:500;font-size:clamp(18px,3.6vw,24px);letter-spacing:-.01em}
-    .title .badge{font-size:14px;font-weight:600;color:#fff;background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow)}
-    .title span:last-child{font-family:'Fredoka', Poppins, system-ui, Segoe UI, Roboto, Arial, sans-serif; font-weight:400; color:var(--text); letter-spacing:.005em; line-height:1.2}
+    .wrap{min-height:100dvh; display:grid; place-items:center; padding:28px}
+    .stage{width:min(940px, 100%); min-height:100dvh; display:grid; place-items:center; padding:16px; position:relative}
 
-    /* ====== Card 2 (player) ====== */
-    .player{background:var(--card-solid);border-radius:14px;border:1px solid rgb(17 24 39 / .06);overflow:hidden}
-    .player header{justify-content:space-between;margin:0;padding:14px 16px;background:linear-gradient(90deg,#f6f9ff,#fff)}
-    .player header h2{font-size:16px;margin:0}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:1px solid rgb(17 24 39 / .08);background:#fff;cursor:pointer;text-decoration:none;color:var(--text);min-height:44px}
-    .btn:hover{box-shadow:0 6px 18px rgb(17 24 39 / .10);transform:translateY(-1px);transition:all .15s ease}
+    .card{display:none; background:var(--cardBg); padding:32px; box-shadow:0 10px 28px rgba(0,0,0,.35); position:relative; margin:0 auto; border-radius:12px; align-items:center; justify-content:center;}
+    .card.active{display:flex; flex-direction:column; gap:20px; animation:fade .35s ease;}
 
-    /* Responsive iframe with 16:9 ratio */
-    .video{position:relative;width:100%}
-    .video::before{content:"";display:block;padding-top:56.25%}
-    .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .card h2, .card .lead{
+      margin-top:8px;
+      text-align:center;
+    }
 
-    /* ====== Footer ====== */
-    footer{margin-top:8px;text-align:center;color:var(--muted);font-size:14px}
+    /* Keyframes umum */
+    @keyframes fade{from{opacity:0;} to{opacity:1;}}
+    @keyframes slideUpFade{from{transform:translateY(20px); opacity:0} to{transform:none; opacity:1}}
+    @keyframes slideInRight{from{transform:translateX(24px); opacity:0} to{transform:none; opacity:1}}
+    @keyframes zoomFade{from{transform:scale(.96); opacity:0} to{transform:scale(1); opacity:1}}
+    @keyframes flipUp{from{transform:rotateX(12deg) translateY(10px); opacity:0; transform-origin:bottom} to{transform:none; opacity:1}}
+    @keyframes sway{0%,100%{transform:translateX(0);} 50%{transform:translateX(10px);}}
+    @keyframes bounce{
+      0%,100%{transform:translateY(0);} 
+      50%{transform:translateY(-15px);}
+    }
 
-    /* ====== Reduce motion ====== */
-@media (prefers-reduced-motion: reduce){
-  .card:hover{transform:none}
-  .btn:hover,.float-btn:hover{transform:none}
-}
+    /* Animasi khusus per card (2-5) */
+    #card-2.active{animation:slideUpFade .45s ease-out both}
+    #card-3.active{animation:slideInRight .45s cubic-bezier(.2,.9,.2,1) both}
+    #card-4.active{animation:zoomFade .38s ease-out both}
+    #card-5.active{animation:flipUp .5s cubic-bezier(.2,.9,.2,1) both}
 
-/* ====== Responsive tweaks ====== */
-@media (max-width: 900px){
-  .stack{width:min(780px,100%)}
-}
-@media (max-width: 768px){
-  .wrap{padding:clamp(12px,4vw,20px)}
-  .stack{gap:clamp(12px,3vw,16px)}
-  .card-inner{padding:clamp(14px,3.5vw,18px)}
-  .player header{padding:12px 14px}
-  .float-btn{right:12px; bottom:-14px}
-}
-@media (max-width: 520px){
-  .title{font-size:clamp(16px,5.2vw,20px)}
-  .sprinkles{display:none}
-  .fab-stack{position:static; display:flex; flex-direction:column; gap:8px; align-items:flex-end; margin-top:8px}
-  .float-btn{width:auto; white-space:nowrap}
-}
-  .sprinkles{display:none}
-  .card-wrap{ text-align:right; }
-  .float-btn{position:static; display:inline-flex; margin:8px 0 0 0; width:auto; white-space:nowrap;}
-}
-</style>
+    /* Responsive square cards */
+    #card-2, #card-3, #card-4, #card-5 {
+      width: clamp(280px, 80vw, 600px);
+      height: clamp(280px, 70vh, 420px);
+      border-radius: 12px;
+      will-change: transform, opacity; /* smooth */
+    }
+
+    h1,h2{margin:0; text-align:center; color:#ffd6e8}
+    .lead{color:var(--muted); text-align:center; max-width:52ch}
+
+    .btn{
+      appearance:none; border:none; cursor:pointer; font-weight:800;
+      background:linear-gradient(180deg, var(--btn2), var(--btn)); color:var(--btnText);
+      padding:14px 24px; border-radius:999px; box-shadow:0 10px 20px rgba(0,0,0,.35);
+      transition:transform .15s ease, box-shadow .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:0 16px 28px rgba(0,0,0,.45)}
+
+    #card-1{
+      background:none; border:none; box-shadow:none; padding:0; min-height:auto;
+    }
+    .envelope{
+      width:clamp(260px,70vw,500px);
+      aspect-ratio:4/3;
+      position:relative;
+      background:#803355;
+      box-shadow:0 16px 44px rgba(0,0,0,.42);
+      cursor:pointer;
+    }
+    .envelope .flap-top{
+      position:absolute; top:0; left:0; right:0; height:50%;
+      background:#993366;
+      clip-path:polygon(0 0,100% 0,50% 100%);
+      transform-origin:top; transition:transform .8s ease;
+    }
+    .envelope.open .flap-top{transform:rotateX(180deg)}
+    .envelope .flap-bottom{
+      position:absolute; bottom:0; left:0; right:0; height:50%;
+      background:#a64d79;
+      clip-path:polygon(0 100%,50% 0,100% 100%);
+    }
+    .envelope .flap-left{
+      position:absolute; top:0; bottom:0; left:0; width:50%;
+      background:#8c2f5c;
+      clip-path:polygon(0 0,100% 50%,0 100%);
+    }
+    .envelope .flap-right{
+      position:absolute; top:0; bottom:0; right:0; width:50%;
+      background:#8c2f5c;
+      clip-path:polygon(100% 0,100% 100%,0 50%);
+    }
+    .cta-open{
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+      padding:12px 20px; background:linear-gradient(135deg,#e06ba0,#c94f87);
+      border:none; border-radius:999px; color:#fff; font-weight:bold; box-shadow:0 12px 26px rgba(0,0,0,.45);
+    }
+
+    /* Gambar di card 2 */
+    #card-2 img{
+      position:absolute;
+      right:32px;
+      bottom:16px;
+      width:180px;
+      height:auto;
+      border-radius:8px;
+      max-width:40%;
+      animation:sway 2s ease-in-out infinite;
+    }
+
+    @media (max-width: 600px){
+      #card-2 img{
+        width:120px;
+        right:12px;
+        bottom:12px;
+      }
+    }
+
+    /* Gambar di card 3 */
+    #card-3 img{
+      position:absolute;
+      left:32px;
+      bottom:16px;
+      width:180px;
+      height:auto;
+      border-radius:8px;
+      max-width:40%;
+      animation:sway 2s ease-in-out infinite;
+    }
+
+    @media (max-width: 600px){
+      #card-3 img{
+        width:120px;
+        left:12px;
+        bottom:12px;
+      }
+    }
+
+    /* Gambar di card 4 */
+    #card-4 img{
+      position:absolute;
+      left:32px;
+      bottom:16px;
+      width:180px;
+      height:auto;
+      border-radius:8px;
+      max-width:40%;
+      animation:sway 2s ease-in-out infinite;
+    }
+
+    @media (max-width: 600px){
+      #card-4 img{
+        width:120px;
+        left:12px;
+        bottom:12px;
+      }
+    }
+
+    /* Gambar di card 5 */
+    #card-5 img{
+      position:absolute;
+      right:32px;
+      bottom:16px;
+      width:180px;
+      height:auto;
+      border-radius:8px;
+      max-width:40%;
+    }
+
+    @media (max-width: 600px){
+      /* Pastikan gambar tidak menutupi tombol di mobile */
+      #card-5 img{
+        position:static; /* lepaskan dari absolute supaya ikut alur dokumen */
+        display:block;
+        width:120px;
+        height:auto;
+        margin:8px auto 0; /* taruh di tengah bawah teks */
+      }
+      /* Susun tombol vertikal agar lebih lega di layar kecil */
+      #card-5 div{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+        margin-top:20px;
+      }
+    }
+
+    /* Tombol di tengah card */
+    .next-cta, #card-5 div{
+      position:static;
+      transform:none;
+      margin-top:40px; /* ditambah agar lebih jauh dari teks */
+      display:flex;
+      justify-content:center;
+      gap:12px;
+    }
+
+    /* CONFETTI */
+    .confetti-layer{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:9999; font-size:20px; line-height:1}
+    .confetti-piece{position:absolute; opacity:0; will-change:transform, opacity}
+
+    @keyframes fall{
+      0%{transform:translate3d(var(--x,0), -10vh, 0) rotate(0turn); opacity:0}
+      15%{opacity:1}
+      100%{transform:translate3d(var(--x,0), 105vh, 0) rotate(3turn); opacity:0}
+    }
+    @keyframes driftRight{
+      0%{transform:translate3d(-5vw, var(--y,0),0) rotate(0turn); opacity:0}
+      15%{opacity:1}
+      100%{transform:translate3d(110vw, calc(var(--y,0) + 40vh),0) rotate(2.5turn); opacity:0}
+    }
+    @keyframes driftLeft{
+      0%{transform:translate3d(105vw, var(--y,0),0) rotate(0turn); opacity:0}
+      15%{opacity:1}
+      100%{transform:translate3d(-15vw, calc(var(--y,0) + 40vh),0) rotate(-2.5turn); opacity:0}
+    }
+  @media (max-height: 520px){#card-2,#card-3,#card-4,#card-5{height:auto; min-height:300px; padding-bottom:72px;} .next-cta,#card-5 div{bottom:12px;}}
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="stack" role="main">
-      <!-- ===== Card 1: Sambutan ===== -->
-      <section class="card intro-card" aria-labelledby="hi-title">
-        <div class="card-inner">
-          <div class="title" id="hi-title">
-            <span class="badge" aria-hidden="true">Haiii</span>
-            <span>selamat datang lagi, satu video untuk mood boostermu hari ini</span>
-          </div>
-          </div>
-        <span class="sprinkles" aria-hidden="true"></span>
-      </section>
-
-      <!-- ===== Card 2: Pemutar Video ===== -->
-      <div class="card-wrap">
-      <section class="card" aria-labelledby="player-title">
-        <div class="card-inner">
-          <div class="player">
-            <header>
-              <h2 id="player-title">Video Mood Booster</h2>
-              <!-- Ganti link YouTube di bawah jika ingin -->
-            </header>
-            <div class="video" role="region" aria-label="Pemutar video YouTube">
-              <!--
-                Cara ganti video:
-                - Ambil ID video YouTube (misal https://www.youtube.com/watch?v=abc123 → ID=abc123)
-                - Ganti pada src menjadi https://www.youtube.com/embed/ID
-              -->
-              <iframe id="yt-embed" src="https://www.youtube.com/embed/yqPGMUcZEFg?rel=0&modestbranding=1"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+    <div class="stage">
+      <section class="card active" id="card-1">
+        <div class="envelope" id="envelope">
+          <div class="flap-top"></div>
+          <div class="flap-left"></div>
+          <div class="flap-right"></div>
+          <div class="flap-bottom"></div>
+          <button class="cta-open" id="btnOpen">Buka Amplop</button>
         </div>
       </section>
-      <div class="fab-stack">
-        <a id="yt-link" class="float-btn" href="#" target="_blank" rel="noopener" aria-label="Buka video di YouTube">Buka di YouTube ↗</a>
-        <a class="float-btn" href="https://example.com" target="_blank" rel="noopener" aria-label="Buka website lain">hbd</a>
-      </div>
-      </div>
 
-      <footer>© <span id="year"></span> Dibuat Oleh Kak Mamat</footer>
+      <section class="card" id="card-2">
+        <h2>Happy Birthday Yuniar❤️</h2>
+        <p class="lead">25 bukan hanya angka, tapi cerminan dari segala perjuangan, mimpi, dan doa yang udah kamu jalani.💕</p>
+        <img src="https://i.ibb.co.com/KxS83NkD/birthday.png" alt="birthday image">
+        <div class="next-cta"><button class="btn" data-next>Next ➜</button></div>
+      </section>
+
+      <section class="card" id="card-3">
+        <h2>🌸 Harapan Manis 🌸</h2>
+        <p class="lead">Semoga tahun ini menjadi awal dari banyak keajaiban baru dalam hidupmu✨</p>
+        <img src="https://i.ibb.co.com/h33XnT1/wish.png" alt="wish image">
+        <div class="next-cta"><button class="btn" data-next>Next ➜</button></div>
+      </section>
+
+      <section class="card" id="card-4">
+        <h2>💖 Stay Happy 💖</h2>
+        <p class="lead">Jangan lupa self love, kamu tau yang terbaik untuk dirimu 💫</p>
+        <img src="https://i.ibb.co.com/jvSnpVRk/happy.png" alt="happy image">
+        <div class="next-cta"><button class="btn" data-next>Next ➜</button></div>
+      </section>
+
+      <section class="card" id="card-5">
+        <h2>Sudah Siap Rayakan? 🥳</h2>
+        <p class="lead">Dont worry, tidak semua bunga mekarnya bersamaan</p>
+        <img id="celebrateImg" src="https://i.ibb.co.com/99fvZyqk/celebrate.png" alt="celebrate image">
+        <div>
+          <button class="btn success" id="celebrateBtn">Rayakan 🎊</button>
+          <button class="btn warn" id="repeatBtn">Ulangi ↻</button>
+        </div>
+      </section>
     </div>
   </div>
 
-  <script>
-  // footer year
-  const yEl = document.getElementById('year');
-  if (yEl) yEl.textContent = new Date().getFullYear();
+  <div class="confetti-layer" id="confetti"></div>
 
-  // sync YouTube FAB link with the iframe in card 2
-  (function(){
-    const iframe = document.getElementById('yt-embed');
-    const link = document.getElementById('yt-link');
-    function updateLink(){
-      if(!iframe || !link) return;
-      try{
-        const url = new URL(iframe.src);
-        // Expect path like /embed/VIDEO_ID
-        const parts = url.pathname.split('/');
-        const id = parts.pop() || parts.pop();
-        if(id){
-          const watch = new URL('https://www.youtube.com/watch');
-          watch.searchParams.set('v', id);
-          link.href = watch.toString();
-        }
-      }catch(e){ /* no-op */ }
+  <script>
+    const cards=[...document.querySelectorAll('.card')];
+    let current=0;
+    function showCard(idx){cards.forEach((c,i)=>c.classList.toggle('active',i===idx));current=idx;}
+
+    document.getElementById('btnOpen').addEventListener('click',()=>{
+      document.getElementById('envelope').classList.add('open');
+      setTimeout(()=>showCard(1),650);
+    });
+
+    document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>showCard(Math.min(current+1,cards.length-1))));
+    document.getElementById('repeatBtn').addEventListener('click',()=>showCard(1));
+    document.getElementById('celebrateBtn').addEventListener('click',()=>{
+      runConfetti();
+      const img=document.getElementById('celebrateImg');
+      img.style.animation='bounce 1s ease-in-out 3';
+    });
+
+    const confettiLayer=document.getElementById('confetti');
+    function spawnPiece(style){
+      const el=document.createElement('span');
+      el.className='confetti-piece';
+      el.textContent='😭';
+      el.style.fontSize=(18+Math.random()*10)+'px';
+      if(style==='top'){
+        el.style.left=Math.random()*100+'vw';
+        el.style.setProperty('--x', (Math.random()*20-10)+'px');
+        el.style.animation=`fall ${2.8+Math.random()*1.5}s linear forwards`;
+      }
+      if(style==='left'){
+        el.style.top=Math.random()*70+'vh';
+        el.style.setProperty('--y', (Math.random()*10-5)+'vh');
+        el.style.animation=`driftRight ${2.2+Math.random()*1.6}s ease-out forwards`;
+      }
+      if(style==='right'){
+        el.style.top=Math.random()*70+'vh';
+        el.style.setProperty('--y', (Math.random()*10-5)+'vh');
+        el.style.animation=`driftLeft ${2.2+Math.random()*1.6}s ease-out forwards`;
+      }
+      el.addEventListener('animationend',()=>el.remove());
+      confettiLayer.appendChild(el);
     }
-    updateLink();
-    // Update automatically if iframe src changes later
-    if (window.MutationObserver && iframe) {
-      const mo = new MutationObserver(updateLink);
-      mo.observe(iframe, { attributes: true, attributeFilter: ['src'] });
+
+    function rainTop(duration=2500,rate=6){
+      const start=performance.now();
+      function frame(now){
+        if(now-start<duration){ for(let i=0;i<rate;i++) spawnPiece('top'); requestAnimationFrame(frame); }
+      }
+      requestAnimationFrame(frame);
     }
-  })();
-</script>
+    function burstSides(duration=2200,batch=6){
+      const start=performance.now();
+      function frame(now){
+        if(now-start<duration){ for(let i=0;i<batch;i++){ spawnPiece('left'); spawnPiece('right'); } setTimeout(()=>requestAnimationFrame(frame),300); }
+      }
+      requestAnimationFrame(frame);
+    }
+    function runConfetti(){ rainTop(); burstSides(); }
+  </script>
 </body>
 </html>
+
