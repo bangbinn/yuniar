@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mood Booster • 1 Halaman</title>
+  <meta name="description" content="Dua kartu sederhana: sambutan dan pemutar video YouTube untuk mood booster." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* ====== Reset ringkas ====== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;line-height:1.5;-webkit-font-smoothing:antialiased;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background: 
+      radial-gradient(1400px 900px at 10% -10%, rgba(255,246,220,.9) 0%, rgba(255,218,185,.7) 30%, transparent 70%),
+      radial-gradient(1200px 900px at 110% 10%, rgba(246,232,255,.85) 0%, rgba(255,200,230,.6) 35%, transparent 70%),
+      linear-gradient(120deg, #fff3a6 0%, #ffb27a 30%, #ff7fb0 55%, #b788ff 75%, #7ea0ff 100%);}
+    img,svg,video{display:block;max-width:100%}
+    
+    /* ====== Theme tokens ====== */
+    :root{
+      --text:#16181d;
+      --muted:#5c6470;
+      --card:#ffffffcc;       /* translucent */
+      --card-solid:#ffffff;   /* solid base for nested elems */
+      --ring: 0 0 0 8px rgb(255 255 255 / .7), 0 10px 30px rgb(17 24 39 / .15);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgb(17 24 39 / .18);
+      --brand:#6c5ce7; /* ultraviolet */
+      --brand-accent:#00c2ff; /* aqua */
+      --ok:#00d38f;
+    }
+
+    /* ====== Layout ====== */
+    .wrap{min-height:100%;display:grid;place-items:center;padding:28px}
+    .stack{width:min(880px,100%);display:grid;gap:20px}
+
+    /* ====== Fun header ====== */
+    header{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px}
+    header .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 160deg at 50% 50%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75);box-shadow:var(--shadow)}
+    header h1{font-size:clamp(20px,4.2vw,28px);color:var(--text);letter-spacing:-.02em}
+
+    /* ====== Card ====== */
+    .card{position:relative;border:2px solid transparent;background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.78)) padding-box, linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) border-box; backdrop-filter:saturate(160%) blur(10px); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    .card-inner{padding:22px 22px}
+    .card:hover{transform:translateY(-2px);transition:transform .18s ease}
+
+    /* confetti corners */
+    .sprinkles{position:absolute;inset:auto 0 0 auto;width:120px;height:120px;opacity:.15;background:
+      radial-gradient(6px 6px at 20% 20%, #ff7ab6 98%, transparent),
+      radial-gradient(5px 5px at 70% 30%, #7ee7ff 98%, transparent),
+      radial-gradient(4px 4px at 40% 70%, #ffd36a 98%, transparent),
+      radial-gradient(3px 3px at 85% 60%, #8bffca 98%, transparent);
+      pointer-events:none
+    }
+
+    /* ====== Card 1 (teks) ====== */
+    .title{display:flex;align-items:center;gap:10px;font-weight:800;font-size:clamp(18px,3.6vw,24px)}
+    .title .badge{font-size:14px;font-weight:600;color:#fff;background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow)}
+
+    /* ====== Card 2 (player) ====== */
+    .player{background:var(--card-solid);border-radius:14px;border:1px solid rgb(17 24 39 / .06);overflow:hidden}
+    .player header{justify-content:space-between;margin:0;padding:14px 16px;background:linear-gradient(90deg,#f6f9ff,#fff)}
+    .player header h2{font-size:16px;margin:0}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:1px solid rgb(17 24 39 / .08);background:#fff;cursor:pointer;text-decoration:none;color:var(--text);min-height:44px}
+    .btn:hover{box-shadow:0 6px 18px rgb(17 24 39 / .10);transform:translateY(-1px);transition:all .15s ease}
+
+    /* Responsive iframe with 16:9 ratio */
+    .video{position:relative;width:100%}
+    .video::before{content:"";display:block;padding-top:56.25%}
+    .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* ====== Footer ====== */
+    footer{margin-top:8px;text-align:center;color:var(--muted);font-size:14px}
+
+    /* ====== Reduce motion ====== */
+@media (prefers-reduced-motion: reduce){
+  .card:hover{transform:none}
+
+/* ====== Responsive tweaks ====== */
+@media (max-width: 768px){
+  .wrap{padding:20px}
+  .stack{gap:16px}
+  .card-inner{padding:16px}
+  .player header{padding:12px 14px}
+}
+@media (max-width: 480px){
+  header h1{font-size:clamp(18px,7vw,22px)}
+  .title{font-size:clamp(16px,5.5vw,20px)}
+  .sprinkles{display:none}
+  .btn{width:100%}
+}
+      .btn:hover{transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="stack" role="main">
+      <header aria-label="Judul halaman">
+        <span class="logo" aria-hidden="true"></span>
+        <h1>Mood Booster Harian ✨</h1>
+      </header>
+
+      <!-- ===== Card 1: Sambutan ===== -->
+      <section class="card" aria-labelledby="hi-title">
+        <div class="card-inner">
+          <div class="title" id="hi-title">
+            <span class="badge" aria-hidden="true">Haiii</span>
+            <span>selamat datang lagi 😎, 1 video untuk mood boostermu hari ini</span>
+          </div>
+          </div>
+        <span class="sprinkles" aria-hidden="true"></span>
+      </section>
+
+      <!-- ===== Card 2: Pemutar Video ===== -->
+      <section class="card" aria-labelledby="player-title">
+        <div class="card-inner">
+          <div class="player">
+            <header>
+              <h2 id="player-title">Video Mood Booster</h2>
+              <!-- Ganti link YouTube di bawah jika ingin -->
+              <a class="btn" href="https://youtu.be/jfKfPfyJRdk" target="_blank" rel="noopener">Buka di YouTube ↗</a>
+            </header>
+            <div class="video" role="region" aria-label="Pemutar video YouTube">
+              <!--
+                Cara ganti video:
+                - Ambil ID video YouTube (misal https://www.youtube.com/watch?v=abc123 → ID=abc123)
+                - Ganti pada src menjadi https://www.youtube.com/embed/ID
+              -->
+              <iframe 
+                src="https://www.youtube.com/embed/jfKfPfyJRdk?rel=0&modestbranding=1"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>© <span id="year"></span> Dibuat untuk Niar</footer>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
