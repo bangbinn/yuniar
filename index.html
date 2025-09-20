@@ -46,6 +46,11 @@
     .card-inner{padding:22px 22px}
     .card:hover{transform:translateY(-2px);transition:transform .18s ease}
 
+    /* floating action button outside the card */
+    .card-wrap{position:relative}
+    .float-btn{position:absolute; right:-10px; bottom:-10px; background:linear-gradient(90deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff; padding:10px 14px; border-radius:999px; border:0; box-shadow:var(--shadow); display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:600; min-height:44px}
+    .float-btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgb(17 24 39 / .18);} 
+
     /* confetti corners */
     .sprinkles{position:absolute;inset:auto 0 0 auto;width:120px;height:120px;opacity:.15;background:
       radial-gradient(6px 6px at 20% 20%, #ff7ab6 98%, transparent),
@@ -77,7 +82,23 @@
     /* ====== Reduce motion ====== */
 @media (prefers-reduced-motion: reduce){
   .card:hover{transform:none}
+  .btn:hover{transform:none}
+}
 
+/* ====== Responsive tweaks ====== */
+@media (max-width: 768px){
+  .wrap{padding:20px}
+  .stack{gap:16px}
+  .card-inner{padding:16px}
+  .player header{padding:12px 14px}
+}
+@media (max-width: 480px){
+  header h1{font-size:clamp(18px,7vw,22px)}
+  .title{font-size:clamp(16px,5.5vw,20px)}
+  .sprinkles{display:none}
+  .btn{width:100%}
+  .float-btn{position:static; display:block; margin:10px 0 0 auto;}
+}
 /* ====== Responsive tweaks ====== */
 @media (max-width: 768px){
   .wrap{padding:20px}
@@ -115,13 +136,13 @@
       </section>
 
       <!-- ===== Card 2: Pemutar Video ===== -->
+      <div class="card-wrap">
       <section class="card" aria-labelledby="player-title">
         <div class="card-inner">
           <div class="player">
             <header>
               <h2 id="player-title">Video Mood Booster</h2>
               <!-- Ganti link YouTube di bawah jika ingin -->
-              <a class="btn" href="https://youtu.be/jfKfPfyJRdk" target="_blank" rel="noopener">Buka di YouTube ↗</a>
             </header>
             <div class="video" role="region" aria-label="Pemutar video YouTube">
               <!--
@@ -139,8 +160,10 @@
           </div>
         </div>
       </section>
+      <a class="float-btn" href="https://youtu.be/jfKfPfyJRdk" target="_blank" rel="noopener" aria-label="Buka video di YouTube">Buka di YouTube ↗</a>
+      </div>
 
-      <footer>© <span id="year"></span> Dibuat oleh kak mamat</footer>
+      <footer>© <span id="year"></span> Dibuat Oleh Kak Mamat</footer>
     </div>
   </div>
 
